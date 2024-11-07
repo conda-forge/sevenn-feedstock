@@ -27,7 +27,6 @@ requirements:
     - setuptools >=61.0
     - pip
   run:
-    - torch-geometric >=2.5.0
     - python >=3.8
     - ase
     - braceexpand
@@ -35,7 +34,7 @@ requirements:
     - e3nn
     - tqdm
     - scikit-learn
-    - pytorch_geometric
+    - pytorch_geometric >=2.5.0
     - numpy <2.0
 
 test:
