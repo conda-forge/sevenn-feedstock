@@ -1,5 +1,5 @@
 {% set name = "sevenn" %}
-{% set version = "0.10.1" %}
+{% set version = "0.10.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sevenn-{{ version }}.tar.gz
-  sha256: 00b65e16a16fa587a1bc8ef38285cbb291c62e2bd4678ace2f8525febd4e3379
+  sha256: 248e4a885f5a5a42dffd3df3e7c399cbd212e4409bdc31f4b96309d6876c0b02
 
 build:
   entry_points:
@@ -27,6 +27,7 @@ requirements:
     - setuptools >=61.0
     - pip
   run:
+    - matscipy
     - python >=3.8
     - ase
     - braceexpand
