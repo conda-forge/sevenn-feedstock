@@ -1,5 +1,5 @@
 {% set name = "sevenn" %}
-{% set version = "0.10.2" %}
+{% set version = "0.10.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sevenn-{{ version }}.tar.gz
-  sha256: 248e4a885f5a5a42dffd3df3e7c399cbd212e4409bdc31f4b96309d6876c0b02
+  sha256: f16f51e47d2ce254f8b464c960b310d50c6d7bc607747d5d295dfa7e86b7bc41
 
 build:
   entry_points:
