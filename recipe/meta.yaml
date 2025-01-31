@@ -1,5 +1,5 @@
 {% set name = "sevenn" %}
-{% set version = "0.10.3" %}
+{% set version = "0.10.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sevenn-{{ version }}.tar.gz
-  sha256: f16f51e47d2ce254f8b464c960b310d50c6d7bc607747d5d295dfa7e86b7bc41
+  sha256: db3c4023d94f7ef32b6f2973912c7661f2dd7768cd05bcf0959fc496ce7d12af
 
 build:
   entry_points:
@@ -19,7 +19,7 @@ build:
     - sevenn_preset = sevenn.main.sevenn_preset:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -36,7 +36,7 @@ requirements:
     - tqdm
     - scikit-learn
     - pytorch_geometric >=2.5.0
-    - numpy <2.0
+    - numpy
 
 test:
   imports:
