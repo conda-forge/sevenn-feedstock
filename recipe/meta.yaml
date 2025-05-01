@@ -1,5 +1,5 @@
 {% set name = "sevenn" %}
-{% set version = "0.11.0" %}
+{% set version = "0.11.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sevenn-{{ version }}.tar.gz
-  sha256: 79d8c347957c1653b38d9846a4fb75e7dad8085e6c29c64cb304e72242bcb712
+  sha256: 45950380bf68dc2014ab0d1d6f5cac141d4a6afaeaae49b00e2ae27ab60d2d4d
 
 build:
   entry_points:
@@ -27,6 +27,8 @@ requirements:
     - setuptools >=61.0
     - pip
   run:
+    - setuptools >=61.0
+    - torch-geometric >=2.5.0
     - pandas
     - requests
     - matscipy
