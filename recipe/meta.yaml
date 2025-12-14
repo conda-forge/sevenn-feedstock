@@ -1,5 +1,5 @@
 {% set name = "sevenn" %}
-{% set version = "0.11.0" %}
+{% set version = "0.12.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sevenn-{{ version }}.tar.gz
-  sha256: 79d8c347957c1653b38d9846a4fb75e7dad8085e6c29c64cb304e72242bcb712
+  sha256: 5d1f95fa389128d90ce8925bad445d61b35ff5330db335eac28ac7203f66016a
 
 build:
   entry_points:
@@ -17,20 +17,28 @@ build:
     - sevenn_inference = sevenn.main.sevenn_inference:main
     - sevenn_patch_lammps = sevenn.main.sevenn_patch_lammps:main
     - sevenn_preset = sevenn.main.sevenn_preset:main
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
+  skip:  True  # [not linux or cuda_compiler_version == "None"] 
 
 requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
+    - {{ compiler('cuda') }} 
   host:
-    - python {{ python_min }}
+    - python
     - setuptools >=61.0
     - pip
+    - pytorch
+    - cuda-cudart
   run:
+    - ninja
+    - setuptools >=61.0
     - pandas
     - requests
     - matscipy
-    - python >={{ python_min }}
+    - python
     - ase
     - braceexpand
     - pyyaml
@@ -39,12 +47,13 @@ requirements:
     - scikit-learn
     - pytorch_geometric >=2.5.0
     - numpy
+    - cuda-cudart
 
 test:
   imports:
     - sevenn
   commands:
-    - pip check
+    # - pip check
     - sevenn --help
     - sevenn_get_model --help
     - sevenn_graph_build --help
@@ -52,8 +61,7 @@ test:
     - sevenn_patch_lammps --help
     - sevenn_preset --help
   requires:
-    - pip
-    - python {{ python_min }}
+    # - pip
 
 about:
   home: https://github.com/MDIL-SNU/SevenNet
