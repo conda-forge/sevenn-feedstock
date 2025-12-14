@@ -46,6 +46,7 @@ requirements:
     - scikit-learn
     - pytorch_geometric >=2.5.0
     - numpy
+    - cuda-cudart
 
 test:
   imports:
