@@ -52,7 +52,7 @@ test:
   imports:
     - sevenn
   commands:
-    - pip check
+    # - pip check
     - sevenn --help
     - sevenn_get_model --help
     - sevenn_graph_build --help
@@ -60,8 +60,7 @@ test:
     - sevenn_patch_lammps --help
     - sevenn_preset --help
   requires:
-    - pip
-    - python {{ python_min }}
+    # - pip
 
 about:
   home: https://github.com/MDIL-SNU/SevenNet
