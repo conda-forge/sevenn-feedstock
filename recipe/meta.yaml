@@ -19,6 +19,7 @@ build:
     - sevenn_preset = sevenn.main.sevenn_preset:main
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
+  skip:  True  # [not linux or cuda_compiler_version == "None"] 
 
 requirements:
   build:
