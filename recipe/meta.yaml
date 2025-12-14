@@ -17,22 +17,25 @@ build:
     - sevenn_inference = sevenn.main.sevenn_inference:main
     - sevenn_patch_lammps = sevenn.main.sevenn_patch_lammps:main
     - sevenn_preset = sevenn.main.sevenn_preset:main
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ stdlib('c') }}
   host:
-    - python {{ python_min }}
+    - python
     - setuptools >=61.0
     - pip
+    - pytorch
   run:
     - ninja
     - setuptools >=61.0
     - pandas
     - requests
     - matscipy
-    - python >={{ python_min }}
+    - python
     - ase
     - braceexpand
     - pyyaml
