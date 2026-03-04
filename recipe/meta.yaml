@@ -1,5 +1,5 @@
 {% set name = "sevenn" %}
-{% set version = "0.12.0" %}
+{% set version = "0.12.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sevenn-{{ version }}.tar.gz
-  sha256: 5d1f95fa389128d90ce8925bad445d61b35ff5330db335eac28ac7203f66016a
+  sha256: 24944f8d25a6281a80f41037d8cf9ed65552d2bb70c04c4a57bec02b5ab7b32c
 
 build:
   entry_points:
@@ -18,14 +18,14 @@ build:
     - sevenn_patch_lammps = sevenn.main.sevenn_patch_lammps:main
     - sevenn_preset = sevenn.main.sevenn_preset:main
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 5
-  skip:  True  # [not linux or cuda_compiler_version == "None"] 
+  number: 0
+  skip: true  # [not linux or cuda_compiler_version == "None"]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
-    - {{ compiler('cuda') }} 
+    - {{ compiler('cuda') }}
   host:
     - python
     - setuptools >=61.0
